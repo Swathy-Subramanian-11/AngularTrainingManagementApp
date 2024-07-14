@@ -18,14 +18,31 @@ export class TrainingComponent {
   trnByTrainer: Training[];
   trnByTechnology: Training[];
   errMsg: string;
+  techIds: number[];
+  trainerIds: number[];
   constructor(private trainingSvc: TrainingService) {
     this.trainings = [];
     this.training = new Training(0, 0, 0, new Date(), new Date());
     this.trnByTrainer = [];
     this.trnByTechnology = [];
+    this.techIds = [];
+    this.trainerIds = [];
     this.errMsg = "";
+
     this.showAll();
   }
+  /*
+  let trainers: Trainer[];
+this.trainerSvc.getAllTrainers()
+  .subscribe({
+    next: (response: Trainer[]) => {
+      trainers = response;
+      for (let trainer of trainers) {
+        trainerIds.push(trainer.trainerId);
+      }
+    }, error: (err) => alert(err.error)
+  });
+  */
   showAll() {
     this.trainingSvc.getAllTrainings()
       .subscribe({
@@ -46,7 +63,7 @@ export class TrainingComponent {
     this.trainingSvc.getByTrainer(this.training.trainerId)
       .subscribe({
         next: (response: Training[]) => {
-          this.trainings = response;
+          this.trnByTrainer = response;
         }, error: (err) => {
           this.trnByTrainer = [];
           this.errMsg = err.error;
@@ -58,7 +75,7 @@ export class TrainingComponent {
     this.trainingSvc.getByTechnology(this.training.technologyId)
       .subscribe({
         next: (response: Training[]) => {
-          this.trainings = response;
+          this.trnByTechnology = response;
         }, error: (err) => {
           this.trnByTechnology = [];
           this.errMsg = err.error;

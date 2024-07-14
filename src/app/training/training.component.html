@@ -98,11 +98,9 @@
   </tbody>
 </table>
 -->
-<!-- Training Form -->
 <div class="container mt-4">
   <h2 class="text-primary">Training Form</h2>
 
-  <!-- Training Form Card -->
   <div class="card mb-4">
     <h3 class="card-header bg-info text-white">Training Form</h3>
     <div class="card-body">
@@ -111,14 +109,24 @@
           <label for="trainingId">Training Id:</label>
           <input type="number" id="trainingId" name="trainingId" class="form-control" [(ngModel)]="training.trainingId">
         </div>
+        <button type="button" class="btn btn-primary mr-2" (click)="showTraining()" style="margin-top: 10px">Show</button>
         <div class="form-group">
-          <label for="technologyId">Technology Id:</label>
-          <input type="number" id="technologyId" name="technologyId" class="form-control" [(ngModel)]="training.technologyId">
-        </div>
+    <label for="technologyId">Technology Id:</label>
+    <input type="number" id="technologyId" name="technologyId" class="form-control" [(ngModel)]="training.technologyId">
+  </div>
+        <!--
+  <select [(ngModel)]="training.technologyId" name="TechnologyId">
+    @for (trn of techIds; track trn) {
+    <option value="{{trn}}">{{trn}}</option>
+    }
+  </select>
+    -->
+        <button type="button" class="btn btn-primary mr-2" (click)="showTrainingByTechnology()" style="margin-top: 10px">Show By Technology</button>
         <div class="form-group">
           <label for="trainerId">Trainer Id:</label>
           <input type="number" id="trainerId" name="trainerId" class="form-control" [(ngModel)]="training.trainerId">
         </div>
+        <button type="button" class="btn btn-primary mr-2" (click)="showTrainingByTrainer()" style="margin-top: 10px">Show By Trainer</button>
         <div class="form-group">
           <label for="startDate">Start Date:</label>
           <input type="date" id="startDate" name="startDate" class="form-control" [(ngModel)]="training.startDate">
@@ -127,17 +135,13 @@
           <label for="endDate">End Date:</label>
           <input type="date" id="endDate" name="endDate" class="form-control" [(ngModel)]="training.endDate">
         </div>
-
-        <!-- Buttons -->
-        <button type="button" class="btn btn-primary mr-2" (click)="showTraining()">Show By Id</button>
-        <button type="button" class="btn btn-success mr-2" (click)="addTraining()">Save</button>
-        <button type="button" class="btn btn-warning mr-2" (click)="updateTraining()">Update</button>
-        <button type="button" class="btn btn-danger" (click)="deleteTraining()">Delete</button>
+        <button type="button" class="btn btn-success mr-2" (click)="addTraining()" style="margin: 10px">Save</button>
+        <button type="button" class="btn btn-warning mr-2" (click)="updateTraining()" style="margin: 10px">Update</button>
+        <button type="button" class="btn btn-danger" (click)="deleteTraining()" style="margin: 10px">Delete</button>
       </form>
     </div>
   </div>
 
-  <!-- List of Trainings -->
   <div class="card mb-4">
     <h3 class="card-header bg-info text-white">List of Trainings</h3>
     <div class="card-body">
@@ -169,7 +173,6 @@
     </div>
   </div>
 
-  <!-- Trainings in Technology -->
   <div class="card mb-4">
     <h3 class="card-header bg-info text-white">Trainings in Technology {{ training.technologyId }}</h3>
     <div class="card-body">
@@ -201,7 +204,6 @@
     </div>
   </div>
 
-  <!-- Trainings under Trainer -->
   <div class="card">
     <h3 class="card-header bg-info text-white">Trainings under Trainer {{ training.trainerId }}</h3>
     <div class="card-body">
