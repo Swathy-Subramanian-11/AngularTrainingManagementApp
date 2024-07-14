@@ -10,7 +10,7 @@ export class TrainingService {
   baseUrl: string;
   token = localStorage.getItem("token");
   constructor(private http: HttpClient) {
-    this.baseUrl = "http://localhost:5066/api/Training/";
+    this.baseUrl = "http://localhost:5087/api/Training/";
   }
   httpOptions = {
     headers: new HttpHeaders({

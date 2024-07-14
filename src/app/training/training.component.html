@@ -1,3 +1,4 @@
+<!--
 <h3>Training Form</h3>
 <form>
   Training Id: <input type="number" [(ngModel)]="training.trainingId" name="TrainingId" />
@@ -96,3 +97,139 @@
     }
   </tbody>
 </table>
+-->
+<!-- Training Form -->
+<div class="container mt-4">
+  <h2 class="text-primary">Training Form</h2>
+
+  <!-- Training Form Card -->
+  <div class="card mb-4">
+    <h3 class="card-header bg-info text-white">Training Form</h3>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="trainingId">Training Id:</label>
+          <input type="number" id="trainingId" name="trainingId" class="form-control" [(ngModel)]="training.trainingId">
+        </div>
+        <div class="form-group">
+          <label for="technologyId">Technology Id:</label>
+          <input type="number" id="technologyId" name="technologyId" class="form-control" [(ngModel)]="training.technologyId">
+        </div>
+        <div class="form-group">
+          <label for="trainerId">Trainer Id:</label>
+          <input type="number" id="trainerId" name="trainerId" class="form-control" [(ngModel)]="training.trainerId">
+        </div>
+        <div class="form-group">
+          <label for="startDate">Start Date:</label>
+          <input type="date" id="startDate" name="startDate" class="form-control" [(ngModel)]="training.startDate">
+        </div>
+        <div class="form-group">
+          <label for="endDate">End Date:</label>
+          <input type="date" id="endDate" name="endDate" class="form-control" [(ngModel)]="training.endDate">
+        </div>
+
+        <!-- Buttons -->
+        <button type="button" class="btn btn-primary mr-2" (click)="showTraining()">Show By Id</button>
+        <button type="button" class="btn btn-success mr-2" (click)="addTraining()">Save</button>
+        <button type="button" class="btn btn-warning mr-2" (click)="updateTraining()">Update</button>
+        <button type="button" class="btn btn-danger" (click)="deleteTraining()">Delete</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- List of Trainings -->
+  <div class="card mb-4">
+    <h3 class="card-header bg-info text-white">List of Trainings</h3>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Training Id</th>
+              <th>Technology Id</th>
+              <th>Trainer Id</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let trn of trainings">
+              <td>{{ trn.trainingId }}</td>
+              <td>{{ trn.technologyId }}</td>
+              <td>{{ trn.trainerId }}</td>
+              <td>{{ trn.startDate }}</td>
+              <td>{{ trn.endDate }}</td>
+            </tr>
+            <tr *ngIf="trainings.length === 0">
+              <td colspan="5" class="text-center">There are no trainings</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trainings in Technology -->
+  <div class="card mb-4">
+    <h3 class="card-header bg-info text-white">Trainings in Technology {{ training.technologyId }}</h3>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Training Id</th>
+              <th>Technology Id</th>
+              <th>Trainer Id</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let trn of trnByTechnology">
+              <td>{{ trn.trainingId }}</td>
+              <td>{{ trn.technologyId }}</td>
+              <td>{{ trn.trainerId }}</td>
+              <td>{{ trn.startDate }}</td>
+              <td>{{ trn.endDate }}</td>
+            </tr>
+            <tr *ngIf="trnByTechnology.length === 0">
+              <td colspan="5" class="text-center">There are no trainings in this technology</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trainings under Trainer -->
+  <div class="card">
+    <h3 class="card-header bg-info text-white">Trainings under Trainer {{ training.trainerId }}</h3>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Training Id</th>
+              <th>Technology Id</th>
+              <th>Trainer Id</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let trn of trnByTrainer">
+              <td>{{ trn.trainingId }}</td>
+              <td>{{ trn.technologyId }}</td>
+              <td>{{ trn.trainerId }}</td>
+              <td>{{ trn.startDate }}</td>
+              <td>{{ trn.endDate }}</td>
+            </tr>
+            <tr *ngIf="trnByTrainer.length === 0">
+              <td colspan="5" class="text-center">There are no trainings under this trainer</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
