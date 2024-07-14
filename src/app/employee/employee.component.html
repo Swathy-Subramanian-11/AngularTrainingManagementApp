@@ -1,1 +1,189 @@
-<p>employee works!</p>
+<!--<h2>Employee Menu</h2>
+
+<h3>Employee form</h3>
+
+<form>
+  Emp Id: <input type="number" name="eid" [(ngModel)]="employee.empId" />
+  <button (click)="getEmployee()">Show</button><br />
+
+  Name: <input type="text" name="ename" [(ngModel)]="employee.empName" /><br />
+  Designation: <input type="text" name="desg" [(ngModel)]="employee.designation" />
+  <button (click)="getEmployeeByDesg()">Show By Designation</button><br />
+  Phone Number: <input type="number" name="phone" [(ngModel)]="employee.empPhone" /><br />
+  Email: <input type="text" name="email" [(ngModel)]="employee.empEmail" /><br />
+
+  <button (click)="addEmployee()">Save</button>
+  <button (click)="updateEmployee()">Update</button>
+  <button (click)="deleteEmployee()">Delete</button>
+</form>
+
+
+
+<h3>Employee Details</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Emp. Id</th>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    @for (emp of employees; track $index) {
+    <tr>
+      <td>{{emp.empId}}</td>
+      <td>{{emp.empName}}</td>
+      <td>{{emp.designation}}</td>
+      <td>{{emp.empPhone}}</td>
+      <td>{{emp.empEmail}}</td>
+    </tr>
+    }
+    </tbody>
+</table>
+
+
+<h3>Employee Details By Designation {{employee.designation}}</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Emp. Id</th>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    @for (emp of employeesByDesg; track $index) {
+    <tr>
+      <td>{{emp.empId}}</td>
+      <td>{{emp.empName}}</td>
+      <td>{{emp.designation}}</td>
+      <td>{{emp.empPhone}}</td>
+      <td>{{emp.empEmail}}</td>
+    </tr>
+    }@empty{
+    <tr>
+      <td colspan="5">{{errMsg}}</td>
+    </tr>
+    }
+  </tbody>
+</table>-->
+<!-- employee-menu.component.html -->
+
+<div class="container mt-4">
+  <h2 class="text-primary">Employee Menu</h2>
+
+  <!-- Employee form -->
+  <div class="card mb-4">
+    <h3 class="card-header bg-info text-white">Employee Form</h3>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="eid">Emp Id:</label>
+          <input type="number" id="eid" name="eid" class="form-control" [(ngModel)]="employee.empId">
+        </div>
+        <button type="button" class="btn btn-primary mr-2" (click)="getEmployee()">Show</button>
+
+        <div class="form-group">
+          <label for="ename">Name:</label>
+          <input type="text" id="ename" name="ename" class="form-control" [(ngModel)]="employee.empName">
+        </div>
+        <div class="form-group">
+          <label for="desg">Designation:</label>
+          <input type="text" id="desg" name="desg" class="form-control" [(ngModel)]="employee.designation">
+        </div>
+        <button type="button" class="btn btn-primary mr-2" (click)="getEmployeeByDesg()">Show By Designation</button>
+
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-phone"></i></span>
+            </div>
+            <input type="number" id="phone" name="phone" class="form-control" [(ngModel)]="employee.empPhone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            </div>
+            <input type="text" id="email" name="email" class="form-control" [(ngModel)]="employee.empEmail">
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-success mr-2" (click)="addEmployee()" style="margin: 10px">Save</button>
+        <button type="button" class="btn btn-warning mr-2" (click)="updateEmployee()" style="margin: 10px">Update</button>
+        <button type="button" class="btn btn-danger" (click)="deleteEmployee()" style="margin: 10px">Delete</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Employee Details -->
+  <div class="card mb-4">
+    <h3 class="card-header bg-info text-white">Employee Details</h3>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Emp. Id</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of employees; let i = index">
+              <td>{{emp.empId}}</td>
+              <td>{{emp.empName}}</td>
+              <td>{{emp.designation}}</td>
+              <td>{{emp.empPhone}}</td>
+              <td>{{emp.empEmail}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employee Details By Designation -->
+  <div class="card">
+    <h3 class="card-header bg-info text-white">Employee Details By Designation {{employee.designation}}</h3>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Emp. Id</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of employeesByDesg; let i = index">
+              <td>{{emp.empId}}</td>
+              <td>{{emp.empName}}</td>
+              <td>{{emp.designation}}</td>
+              <td>{{emp.empPhone}}</td>
+              <td>{{emp.empEmail}}</td>
+            </tr>
+            <tr *ngIf="employeesByDesg.length === 0">
+              <td colspan="5" class="text-center">No employees found for {{employee.designation}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
