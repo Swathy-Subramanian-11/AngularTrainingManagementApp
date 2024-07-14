@@ -6,12 +6,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TrainingService {
-  private trainings: Training[] = [];
+  //private trainings: Training[] = [];
   baseUrl: string;
   token = localStorage.getItem("token");
   constructor(private http: HttpClient) {
     this.baseUrl = "http://localhost:5066/api/Training/";
   }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    })
+  };
   newTraining(training: Training): Observable<Training> {
     return this.http.post<Training>(this.baseUrl, training);
   }

@@ -17,11 +17,13 @@ export class TrainingComponent {
   training: Training;
   trnByTrainer: Training[];
   trnByTechnology: Training[];
+  errMsg: string;
   constructor(private trainingSvc: TrainingService) {
     this.trainings = [];
     this.training = new Training(0, 0, 0, new Date(), new Date());
     this.trnByTrainer = [];
     this.trnByTechnology = [];
+    this.errMsg = "";
     this.showAll();
   }
   showAll() {
@@ -47,6 +49,7 @@ export class TrainingComponent {
           this.trainings = response;
         }, error: (err) => {
           this.trnByTrainer = [];
+          this.errMsg = err.error;
           alert(err.error)
         }
       });
@@ -58,6 +61,7 @@ export class TrainingComponent {
           this.trainings = response;
         }, error: (err) => {
           this.trnByTechnology = [];
+          this.errMsg = err.error;
           alert(err.error)
         }
       });
@@ -73,7 +77,7 @@ export class TrainingComponent {
       });
   }
   updateTraining() {
-    this.trainingSvc.deleteTraining(this.training.trainingId)
+    this.trainingSvc.updateTraining(this.training.trainingId, this.training)
       .subscribe({
         next: (response: any) => {
           alert("Training details updated.");

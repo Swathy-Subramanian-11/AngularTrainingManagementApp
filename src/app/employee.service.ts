@@ -11,7 +11,7 @@ export class EmployeeService {
   baseUrl: string;
   constructor(private http: HttpClient) {
     
-    this.baseUrl = "http://localhost:5087/api/Employee/";
+    this.baseUrl = "http://localhost:5066/api/Employee/";
   }
   httpOptions = {
     headers: new HttpHeaders({
