@@ -6,6 +6,8 @@ import { RegisterComponent } from './register/register.component';
 import { accountAccessGuard } from './account-access.guard';
 import { LogoutComponent } from './logout/logout.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { TrainerComponent } from './trainer/trainer.component';
+
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -13,6 +15,8 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'employee', component: EmployeeComponent, canActivate: [accountAccessGuard] },
+  { path: 'trainer', component: TrainerComponent, canActivate: [accountAccessGuard] },
+
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
  
