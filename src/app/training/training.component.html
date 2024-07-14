@@ -1,1 +1,98 @@
-<p>training works!</p>
+<h3>Training Form</h3>
+<form>
+  Training Id: <input type="number" [(ngModel)]="training.trainingId" name="TrainingId" />
+  <button (click)="showTraining()">Show By Id</button><br />
+  Technology Id: <input type="number" [(ngModel)]="training.technologyId" name="TechnologyId" />
+  <button (click)="showTrainingByTechnology()">Show By Technology</button> <br />
+  Trainer Id: <input type="number" [(ngModel)]="training.trainerId" name="TrainerId" />
+  <button (click)="showTrainingByTrainer()">Show By Trainer</button> <br />
+  Start Date: <input type="date" [(ngModel)]="training.startDate" name="StartDate" /> <br />
+  End Date: <input type="date" [(ngModel)]="training.endDate" name="EndDate" /> <br />
+  <button (click)="addTraining()">Save</button>
+  <button (click)="updateTraining()">Update</button>
+  <button (click)="deleteTraining()">Delete</button>
+</form>
+
+<h3>List of Trainings</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Training Id</th>
+      <th>Technology Id</th>
+      <th>Trainer Id</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (trn of trainings; track trn.trainingId) {
+    <tr>
+      <td>{{trn.trainingId}}</td>
+      <td>{{trn.technologyId}}</td>
+      <td>{{trn.trainerId}}</td>
+      <td>{{trn.startDate}}</td>
+      <td>{{trn.endDate}}</td>
+    </tr>
+    } @empty {
+    <tr>
+      <td colspan="4">There are no trainings</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<h3>Trainings in Technology {{training.technologyId}}</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Training Id</th>
+      <th>Technology Id</th>
+      <th>Trainer Id</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (trn of trnByTechnology; track trn.trainingId) {
+    <tr>
+      <td>{{trn.trainingId}}</td>
+      <td>{{trn.technologyId}}</td>
+      <td>{{trn.trainerId}}</td>
+      <td>{{trn.startDate}}</td>
+      <td>{{trn.endDate}}</td>
+    </tr>
+    } @empty {
+    <tr>
+      <td colspan="4">There are no trainings in this technology</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<h3>Trainings under Trainer {{training.technologyId}}</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Training Id</th>
+      <th>Technology Id</th>
+      <th>Trainer Id</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (trn of trnByTrainer; track trn.trainingId) {
+    <tr>
+      <td>{{trn.trainingId}}</td>
+      <td>{{trn.technologyId}}</td>
+      <td>{{trn.trainerId}}</td>
+      <td>{{trn.startDate}}</td>
+      <td>{{trn.endDate}}</td>
+    </tr>
+    } @empty {
+    <tr>
+      <td colspan="4">There are no trainings under this trainer.</td>
+    </tr>
+    }
+  </tbody>
+</table>
