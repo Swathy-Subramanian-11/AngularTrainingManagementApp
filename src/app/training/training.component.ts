@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { TrainingService } from '../training.service';
+import { TrainerService } from '../trainer.service';
+import { Trainer } from '../../models/Trainer';
 
 @Component({
   selector: 'app-training',
@@ -20,7 +22,7 @@ export class TrainingComponent {
   errMsg: string;
   techIds: number[];
   trainerIds: number[];
-  constructor(private trainingSvc: TrainingService) {
+  constructor(private trainingSvc: TrainingService, private trainerSvc: TrainerService) {
     this.trainings = [];
     this.training = new Training(0, 0, 0, new Date(), new Date());
     this.trnByTrainer = [];
@@ -31,18 +33,21 @@ export class TrainingComponent {
 
     this.showAll();
   }
-  /*
-  let trainers: Trainer[];
-this.trainerSvc.getAllTrainers()
-  .subscribe({
-    next: (response: Trainer[]) => {
-      trainers = response;
-      for (let trainer of trainers) {
-        trainerIds.push(trainer.trainerId);
-      }
-    }, error: (err) => alert(err.error)
-  });
-  */
+  
+  getAllTrainers(){
+  this.trainerSvc.getAllTrainers()
+    .subscribe({
+      next: (response: Trainer[]) => {
+        let trainers: Trainer[];
+
+        trainers = response;
+        for (let trainer of trainers) {
+          this.trainerIds.push(trainer.trainerId);
+        }
+      }, error: (err) => alert(err.error)
+    });
+  }
+ 
   showAll() {
     this.trainingSvc.getAllTrainings()
       .subscribe({

@@ -110,10 +110,11 @@
           <input type="number" id="trainingId" name="trainingId" class="form-control" [(ngModel)]="training.trainingId">
         </div>
         <button type="button" class="btn btn-primary mr-2" (click)="showTraining()" style="margin-top: 10px">Show</button>
+
         <div class="form-group">
-    <label for="technologyId">Technology Id:</label>
-    <input type="number" id="technologyId" name="technologyId" class="form-control" [(ngModel)]="training.technologyId">
-  </div>
+          <label for="technologyId">Technology Id:</label>
+          <input type="number" id="technologyId" name="technologyId" class="form-control" [(ngModel)]="training.technologyId">
+        </div>
         <!--
   <select [(ngModel)]="training.technologyId" name="TechnologyId">
     @for (trn of techIds; track trn) {
@@ -122,10 +123,18 @@
   </select>
     -->
         <button type="button" class="btn btn-primary mr-2" (click)="showTrainingByTechnology()" style="margin-top: 10px">Show By Technology</button>
+
         <div class="form-group">
           <label for="trainerId">Trainer Id:</label>
           <input type="number" id="trainerId" name="trainerId" class="form-control" [(ngModel)]="training.trainerId">
         </div>
+        <!--
+      <select [(ngModel)]="training.trainerId" name="TrainerId">
+        @for (trn of trainerIds; track trn) {
+        <option value="{{trn}}">{{trn}}</option>
+        }
+      </select>
+    -->
         <button type="button" class="btn btn-primary mr-2" (click)="showTrainingByTrainer()" style="margin-top: 10px">Show By Trainer</button>
         <div class="form-group">
           <label for="startDate">Start Date:</label>

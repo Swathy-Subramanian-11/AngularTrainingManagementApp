@@ -1,0 +1,86 @@
+<div class="container mt-4" >
+  <h2 class="text-primary" style="color: #b200ff;">Technology Menu</h2>
+
+  <!-- Technology form -->
+  <div class="card mb-4">
+    <h3 class="card-header" style="background-color: #b200ff; color: white;">Technology Form</h3>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="techId">Tech Id:</label>
+          <input type="number" id="techId" name="techId" class="form-control" [(ngModel)]="technology.technologyId">
+        </div>
+        <button type="button" class="btn btn-primary mr-2" (click)="getTechnologyById()" style="margin: 10px">Show</button>
+
+        <div class="form-group">
+          <label for="techName">Name:</label>
+          <input type="text" id="techName" name="techName" class="form-control" [(ngModel)]="technology.technologyName">
+        </div>
+        <div class="form-group">
+          <label for="techType">Type:</label>
+          <input type="text" id="techType" name="techType" class="form-control" [(ngModel)]="technology.technologyType">
+        </div>
+        <button type="button" class="btn btn-primary mr-2" (click)="getTechnologiesByType()" style="margin: 10px">Show By Type</button>
+
+
+        <button type="button" class="btn btn-success mr-2" (click)="addTechnology()" style="margin: 10px">Save</button>
+        <button type="button" class="btn btn-warning mr-2" (click)="updateTechnology()" style="margin: 10px">Update</button>
+        <button type="button" class="btn btn-danger" (click)="deleteTechnology()" style="margin: 10px">Delete</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Technology Details -->
+  <div class="card mb-4">
+    <h3 class="card-header" style="background-color: #b200ff; color: white;">Technology Details</h3>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Tech Id</th>
+              <th>Name</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tech of technologies; let i = index">
+              <td>{{tech.technologyId}}</td>
+              <td>{{tech.technologyName}}</td>
+              <td>{{tech.technologyType}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Technology Details By Type -->
+  <div class="card">
+    <h3 class="card-header" style="background-color: #b200ff; color: white;">Technology Details By Type {{technology.technologyType}}</h3>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Tech Id</th>
+              <th>Name</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tech of technologiesByType; let i = index">
+              <td>{{tech.technologyId}}</td>
+              <td>{{tech.technologyName}}</td>
+              <td>{{tech.technologyType}}</td>
+            </tr>
+            <tr *ngIf="technologiesByType.length === 0">
+              <td colspan="4" class="text-center">No technologies found for {{technology.technologyType}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
