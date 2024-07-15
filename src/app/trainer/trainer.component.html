@@ -116,9 +116,9 @@
             <input type="text" id="trainerEmail" name="trainerEmail" class="form-control" [(ngModel)]="trainer.trainerEmail">
           </div>
 
-          <button type="button" class="btn btn-success mt-2" (click)="addTrainer()">Save</button>
-          <button type="button" class="btn btn-warning mt-2" (click)="updateTrainer()">Update</button>
-          <button type="button" class="btn btn-danger mt-2" (click)="deleteTrainer()">Delete</button>
+          <button type="button" class="btn btn-success mt-2" (click)="addTrainer()" style="margin: 10px">Save</button>
+          <button type="button" class="btn btn-warning mt-2" (click)="updateTrainer()" style="margin: 10px">Update</button>
+          <button type="button" class="btn btn-danger mt-2" (click)="deleteTrainer()" style="margin: 10px">Delete</button>
 
           <div style="color:red">{{errMsg}}</div>
         </form>
