@@ -30,9 +30,22 @@ export class TrainingComponent {
     this.techIds = [];
     this.trainerIds = [];
     this.errMsg = "";
+    this.trainerSvc.getAllTrainers()
+      .subscribe({
+        next: (response: any) => {
+          const trainers: any[] = response;
+          for (let trainer of trainers) {
+            this.trainerIds.push(trainer.trainerId);
+          }
+        },error:(err)=>alert(err.error)
+        
+      })
+
 
     this.showAll();
   }
+
+
   
   getAllTrainers(){
   this.trainerSvc.getAllTrainers()
