@@ -263,15 +263,15 @@
           <label for="technologyId">Technology Id:</label>
           <input type="number" id="technologyId" name="technologyId" class="form-control" [(ngModel)]="training.technologyId">
         </div>
-        <button type="button" class="btn btn-primary mr-2" (click)="showTrainingByTechnology()" style="margin-top: 10px">Show By Technology</button>
+        <button type="button" class="btn btn-primary mr-2" (click)="showTrainingByTechnology()" style="margin-top: 10px">Show By Technology</button><br/>
 
-        <div class="form-group">
-          <label for="trainerId">Trainer Id:</label>
-          <input type="number" id="trainerId" name="trainerId" class="form-control" [(ngModel)]="training.trainerId">
-        </div>
+        <!--<div class="form-group">
+          <label for="trainerId">Trainer Id:</label>-->
+          <!--<input type="number" id="trainerId" name="trainerId" class="form-control" [(ngModel)]="training.trainerId">
+        </div>-->
 
 
-        Training Id: <select [(ngModel)]="training.trainerId" name="Trainer Id">
+        Training Id: <select [(ngModel)]="training.trainerId" name="Trainer Id" >
   @for (tids of trainerIds; track tids) {
   <option value="{{tids}}">{{tids}}</option>
   }

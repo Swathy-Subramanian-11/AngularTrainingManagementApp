@@ -6,6 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { TrainingService } from '../training.service';
 import { TrainerService } from '../trainer.service';
 import { Trainer } from '../../models/Trainer';
+//import { TrainerService } from '../trainer.service';
+//import { Trainer } from '../../models/Trainer';
+
 
 @Component({
   selector: 'app-training',
@@ -40,6 +43,16 @@ export class TrainingComponent {
         },error:(err)=>alert(err.error)
         
       })
+    //this.trainerSvc.getAllTrainers()
+    //  .subscribe({
+    //    next: (response: any) => {
+    //      const trainers: any[] = response;
+    //      for (let trainer of trainers) {
+    //        this.trainerIds.push(trainer.trainerId);
+    //      }
+    //    }, error: (err) => alert(err.error)
+
+    //  })
 
 
     this.showAll();
