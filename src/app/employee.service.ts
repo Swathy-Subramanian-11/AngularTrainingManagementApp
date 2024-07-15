@@ -25,18 +25,18 @@ export class EmployeeService {
   }
 
   getEmployeeById(eid: number): Observable<Employee> {
-    return this.http.get<Employee>(this.baseUrl +"ById/"+ eid);
+    return this.http.get<Employee>(this.baseUrl + "ById/" + eid, this.httpOptions);
   }
   getEmployeeByDesg(desg: string): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.baseUrl + "ByDesg/" + desg);
+    return this.http.get<Employee[]>(this.baseUrl + "ByDesg/" + desg, this.httpOptions);
   }
   addEmployee(emp: Employee): Observable<Employee> {
-    return this.http.post<Employee>(this.baseUrl,emp);
+    return this.http.post<Employee>(this.baseUrl, JSON.stringify(emp), this.httpOptions);
   }
   updateEmployee(eid: number, emp: Employee): Observable<Employee> {
-    return this.http.put<Employee>(this.baseUrl + eid, emp);
+    return this.http.put<Employee>(this.baseUrl + eid, emp, this.httpOptions);
   }
   deleteEmployee(eid: number): Observable<Employee> {
-    return this.http.delete<Employee>(this.baseUrl + eid);
+    return this.http.delete<Employee>(this.baseUrl + eid, this.httpOptions);
   }
 }

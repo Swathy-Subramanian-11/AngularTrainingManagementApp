@@ -9,7 +9,7 @@
   Name: <input type="text" name="ename" [(ngModel)]="employee.empName" /><br />
   Designation: <input type="text" name="desg" [(ngModel)]="employee.designation" />
   <button (click)="getEmployeeByDesg()">Show By Designation</button><br />
-  Phone Number: <input type="number" name="phone" [(ngModel)]="employee.empPhone" /><br />
+  Phone Number: <input type="text" name="phone" [(ngModel)]="employee.empPhone" /><br />
   Email: <input type="text" name="email" [(ngModel)]="employee.empEmail" /><br />
 
   <button (click)="addEmployee()">Save</button>
@@ -76,7 +76,7 @@
 <!-- employee-menu.component.html -->
 
 <div class="container mt-4">
-  <h2 class="text-primary">Employee Menu</h2>
+  <h2 class="text-primary">Employee Menu</h2>-->
 
   <!-- Employee form -->
   <div class="card mb-4">
@@ -105,7 +105,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-phone"></i></span>
             </div>
-            <input type="number" id="phone" name="phone" class="form-control" [(ngModel)]="employee.empPhone">
+            <input type="text" id="phone" name="phone" class="form-control" [(ngModel)]="employee.empPhone">
           </div>
         </div>
         <div class="form-group">
@@ -123,7 +123,7 @@
         <button type="button" class="btn btn-danger" (click)="deleteEmployee()" style="margin: 10px">Delete</button>
       </form>
     </div>
-  </div>
+  </div>-->
 
   <!-- Employee Details -->
   <div class="card mb-4">
