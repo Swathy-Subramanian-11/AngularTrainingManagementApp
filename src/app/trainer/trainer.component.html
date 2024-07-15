@@ -83,110 +83,112 @@
 
 <div class="container mt-4">
   <h2 class="text-black">Trainer Menu</h2>
-
   <!-- Trainer form -->
-  <div class="card mb-4">
-    <h3 class="card-header bg-warning text-black">Trainer Form</h3>
-    <div class="card-body">
-      <form>
-        <div class="form-group">
-          <label for="trainerId">Id:</label>
-          <input type="number" id="trainerId" name="trainerId" class="form-control" [(ngModel)]="trainer.trainerId">
-          <button type="button" class="btn btn-primary mt-2" (click)="showTrainer()">Show Trainer</button>
-        </div>
+  <div style="width: 50%; margin: left;">
+    <div class="card mb-4">
+      <h3 class="card-header bg-warning text-black">Trainer Form</h3>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="trainerId">Id:</label>
+            <input type="number" id="trainerId" name="trainerId" class="form-control" [(ngModel)]="trainer.trainerId">
+            <button type="button" class="btn btn-primary mt-2" (click)="showTrainer()">Show Trainer</button>
+          </div>
 
-        <div class="form-group">
-          <label for="trainerName">Name:</label>
-          <input type="text" id="trainerName" name="trainerName" class="form-control" [(ngModel)]="trainer.trainerName">
-        </div>
+          <div class="form-group">
+            <label for="trainerName">Name:</label>
+            <input type="text" id="trainerName" name="trainerName" class="form-control" [(ngModel)]="trainer.trainerName">
+          </div>
 
-        <div class="form-group">
-          <label for="trainerType">Type:</label>
-          <input type="text" id="trainerType" name="trainerType" class="form-control" [(ngModel)]="trainer.trainerType">
-          <button type="button" class="btn btn-primary mt-2" (click)="showTrainerbyType()">Show By Type</button>
-        </div>
+          <div class="form-group">
+            <label for="trainerType">Type:</label>
+            <input type="text" id="trainerType" name="trainerType" class="form-control" [(ngModel)]="trainer.trainerType">
+            <button type="button" class="btn btn-primary mt-2" (click)="showTrainerbyType()">Show By Type</button>
+          </div>
 
-        <div class="form-group">
-          <label for="trainerPhone">Phone No:</label>
-          <input type="text" id="trainerPhone" name="trainerPhone" class="form-control" [(ngModel)]="trainer.trainerPhone">
-        </div>
+          <div class="form-group">
+            <label for="trainerPhone">Phone No:</label>
+            <input type="text" id="trainerPhone" name="trainerPhone" class="form-control" [(ngModel)]="trainer.trainerPhone">
+          </div>
 
-        <div class="form-group">
-          <label for="trainerEmail">Email:</label>
-          <input type="text" id="trainerEmail" name="trainerEmail" class="form-control" [(ngModel)]="trainer.trainerEmail">
-        </div>
+          <div class="form-group">
+            <label for="trainerEmail">Email:</label>
+            <input type="text" id="trainerEmail" name="trainerEmail" class="form-control" [(ngModel)]="trainer.trainerEmail">
+          </div>
 
-        <button type="button" class="btn btn-success mt-2" (click)="addTrainer()">Save</button>
-        <button type="button" class="btn btn-warning mt-2" (click)="updateTrainer()">Update</button>
-        <button type="button" class="btn btn-danger mt-2" (click)="deleteTrainer()">Delete</button>
+          <button type="button" class="btn btn-success mt-2" (click)="addTrainer()">Save</button>
+          <button type="button" class="btn btn-warning mt-2" (click)="updateTrainer()">Update</button>
+          <button type="button" class="btn btn-danger mt-2" (click)="deleteTrainer()">Delete</button>
 
-        <div style="color:red">{{errMsg}}</div>
-      </form>
+          <div style="color:red">{{errMsg}}</div>
+        </form>
+      </div>
     </div>
-  </div>
+    </div>
 
-  <!-- List of Trainers -->
-  <div class="card mb-4">
-    <h3 class="card-header bg-warning text-black">List of Trainers</h3>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-          <thead class="thead-dark">
-            <tr>
-              <th>Trainer Id</th>
-              <th>Trainer Name</th>
-              <th>Trainer Type</th>
-              <th>Trainer Phone</th>
-              <th>Trainer Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let trs of trainers">
-              <td>{{trs.trainerId}}</td>
-              <td>{{trs.trainerName}}</td>
-              <td>{{trs.trainerType}}</td>
-              <td>{{trs.trainerPhone}}</td>
-              <td>{{trs.trainerEmail}}</td>
-            </tr>
-            <tr *ngIf="trainers.length === 0">
-              <td colspan="5" class="text-center">There are no Trainers</td>
-            </tr>
-          </tbody>
-        </table>
+
+    <!-- List of Trainers -->
+    <div class="card mb-4">
+      <h3 class="card-header bg-warning text-black">List of Trainers</h3>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Trainer Id</th>
+                <th>Trainer Name</th>
+                <th>Trainer Type</th>
+                <th>Trainer Phone</th>
+                <th>Trainer Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let trs of trainers">
+                <td>{{trs.trainerId}}</td>
+                <td>{{trs.trainerName}}</td>
+                <td>{{trs.trainerType}}</td>
+                <td>{{trs.trainerPhone}}</td>
+                <td>{{trs.trainerEmail}}</td>
+              </tr>
+              <tr *ngIf="trainers.length === 0">
+                <td colspan="5" class="text-center">There are no Trainers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trainers By Type -->
+    <div class="card">
+      <h3 class="card-header bg-warning text-black">Trainers By Type: {{trainer.trainerType}}</h3>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Trainer Id</th>
+                <th>Trainer Name</th>
+                <th>Trainer Type</th>
+                <th>Trainer Phone</th>
+                <th>Trainer Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let t of trainersByType">
+                <td>{{t.trainerId}}</td>
+                <td>{{t.trainerName}}</td>
+                <td>{{t.trainerType}}</td>
+                <td>{{t.trainerPhone}}</td>
+                <td>{{t.trainerEmail}}</td>
+              </tr>
+              <tr *ngIf="trainersByType.length === 0">
+                <td colspan="5" class="text-center">There are no Trainers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- Trainers By Type -->
-  <div class="card">
-    <h3 class="card-header bg-warning text-black">Trainers By Type: {{trainer.trainerType}}</h3>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-          <thead class="thead-dark">
-            <tr>
-              <th>Trainer Id</th>
-              <th>Trainer Name</th>
-              <th>Trainer Type</th>
-              <th>Trainer Phone</th>
-              <th>Trainer Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let t of trainersByType">
-              <td>{{t.trainerId}}</td>
-              <td>{{t.trainerName}}</td>
-              <td>{{t.trainerType}}</td>
-              <td>{{t.trainerPhone}}</td>
-              <td>{{t.trainerEmail}}</td>
-            </tr>
-            <tr *ngIf="trainersByType.length === 0">
-              <td colspan="5" class="text-center">There are no Trainers</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
 
