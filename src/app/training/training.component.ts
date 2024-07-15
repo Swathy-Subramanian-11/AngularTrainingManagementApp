@@ -6,8 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TrainingService } from '../training.service';
 import { TrainerService } from '../trainer.service';
 import { Trainer } from '../../models/Trainer';
-//import { TrainerService } from '../trainer.service';
-//import { Trainer } from '../../models/Trainer';
+import { TechnologyService } from '../technology.service';
+import { Technology } from '../../models/Technology';
 
 
 @Component({
@@ -19,15 +19,23 @@ import { Trainer } from '../../models/Trainer';
 })
 export class TrainingComponent {
   trainings: Training[];
+  technologies: Technology[];
+
   training: Training;
+  technology: Technology;
+
   trnByTrainer: Training[];
   trnByTechnology: Training[];
   errMsg: string;
   techIds: number[];
   trainerIds: number[];
-  constructor(private trainingSvc: TrainingService, private trainerSvc: TrainerService) {
+  constructor(private trainingSvc: TrainingService, private trainerSvc: TrainerService,
+    private techService: TechnologyService) {
     this.trainings = [];
     this.training = new Training(0, 0, 0, new Date(), new Date());
+    this.technologies = [];
+    this.technology = new Technology(0, "","");
+
     this.trnByTrainer = [];
     this.trnByTechnology = [];
     this.techIds = [];
@@ -40,19 +48,19 @@ export class TrainingComponent {
           for (let trainer of trainers) {
             this.trainerIds.push(trainer.trainerId);
           }
-        },error:(err)=>alert(err.error)
-        
-      })
-    //this.trainerSvc.getAllTrainers()
-    //  .subscribe({
-    //    next: (response: any) => {
-    //      const trainers: any[] = response;
-    //      for (let trainer of trainers) {
-    //        this.trainerIds.push(trainer.trainerId);
-    //      }
-    //    }, error: (err) => alert(err.error)
+        }, error: (err) => alert(err.error)
 
-    //  })
+      })
+    this.techService.getAllTechnologies()
+      .subscribe({
+        next: (response: any) => {
+          const technologies: any[] = response;
+          for (let technology of technologies) {
+            this.techIds.push(technology.technologyId);
+          }
+        }, error: (err) => alert(err.error)
+
+      })
 
 
     this.showAll();
