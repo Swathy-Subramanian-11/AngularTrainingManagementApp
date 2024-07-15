@@ -87,7 +87,7 @@
           <label for="eid">Emp Id:</label>
           <input type="number" id="eid" name="eid" class="form-control" [(ngModel)]="employee.empId">
         </div>
-        <button type="button" class="btn btn-primary mr-2" (click)="getEmployee()">Show</button>
+        <button type="button" class="btn btn-primary mr-2" (click)="getEmployee()" style="margin: 10px">Show</button>
 
         <div class="form-group">
           <label for="ename">Name:</label>
@@ -97,7 +97,7 @@
           <label for="desg">Designation:</label>
           <input type="text" id="desg" name="desg" class="form-control" [(ngModel)]="employee.designation">
         </div>
-        <button type="button" class="btn btn-primary mr-2" (click)="getEmployeeByDesg()">Show By Designation</button>
+        <button type="button" class="btn btn-primary mr-2" (click)="getEmployeeByDesg()" style="margin: 10px">Show By Designation</button>
 
         <div class="form-group">
           <label for="phone">Phone Number:</label>
@@ -105,7 +105,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-phone"></i></span>
             </div>
-            <input type="number" id="phone" name="phone" class="form-control" [(ngModel)]="employee.empPhone">
+            <input type="text" id="phone" name="phone" class="form-control" [(ngModel)]="employee.empPhone">
           </div>
         </div>
         <div class="form-group">
